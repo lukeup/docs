@@ -184,7 +184,7 @@ this.emit(':tts', {
 | form | string |  cut  | scene/cut/service |
 | shouldEndSession | boolean | true | true/false |
 | disableEvent | boolean | false | true/false |
-| action | string | PLAY | PLAY/PAUSE/RESUME/STOP |
+| action | string | PLAY | PLAY/STOP |
 | itemId | string | 无（选填）| 不限 |
 | tts | string/number | 无（必填）| 不限 |
 
@@ -193,7 +193,7 @@ this.emit(':tts', {
 | 字段       |   类型 | 默认值 | 可选值 |
 | :-------- |--------:| --: | :--: |
 | sessionKey | string | 无 | 不限 |
-| seesionValue | string | 无 | 不限 |
+| seesionValue | object | 无 | 不限 |
 
 ### 3.2 ttsWithConfirm相关配置
 
@@ -290,7 +290,7 @@ pickup详细：
 
 | 字段       |   类型 | 默认值 | 可选值 |
 | :-------- |--------:| --: | :--: | 
-| enable | boolean | 无（必填）| true/false |
+| enable | boolean | false（必填）| true/false |
 | durationInMilliseconds | number | 6000（选填）| 0至6000 |
 | retryTts | string | 无（选填）| 不限 |
 
@@ -321,9 +321,8 @@ this.emit(":media",{},{})第二个参数如下（media相关信息配置项）�
 | action | string | PLAY | PLAY/PAUSE/RESUME/STOP |
 | itemId | string | 无（选填）| 不限 |
 | token | string | 无 | 不限 |
-| itemType(对应文档item里的type) | string | 无（必填）| AUDIO/VIDEO |
+| itemType(对应文档item里的type) | string | 无（必填）| AUDIO |
 | url | string | 无（必填）| 可用媒体流url |
-| offsetInMilliseconds | number | 0 | 间于媒体流时间长度 |
 
 
 this.emit(":media",{},{})第三个参数如下（session配置项）：
@@ -331,7 +330,7 @@ this.emit(":media",{},{})第三个参数如下（session配置项）：
 | 字段       |   类型 | 默认值 | 可选值 |
 | :-------- |--------:| --: | :--: |
 | sessionKey | string | 无 | 不限 |
-| seesionValue | string | 无 | 不限 |
+| seesionValue | object | 无 | 不限 |
 
 ### 3.6 mediaWithConfirm相关配置
 
@@ -367,7 +366,7 @@ confirm详细：
 | confirmIntent | string | 无（必填）|
 | confirmSlot | string | 无（必填）|
 | optionWords | array | 无（选填）|
-| retryTts | string | 无（选填）| 不限 |
+| retryTts | string | 无（选填）|
 
 ### 3.7 mediaWithCard相关配置
 
@@ -447,8 +446,8 @@ pickup详细：
 | :-------- |--------:| :--: |
 | sentence | Rokid.param.request.content.sentence | 用户说的话|
 | intent | Rokid.param.request.content.intent | 用户的意图 |
-| slot | Rokid.param.request.content.slots | 获取到的是slots的value值 |
-| session | Rokid.param.session.attributes | 暂时只支持在设备上测试时获取 |
+| slot | Rokid.param.request.content.slots.xxx | 获取到的是slots(xxx)的value值 |
+| session | Rokid.param.session.attributes.xxx | 暂时只支持在设备上测试时获取 |
 | userId | Rokid.param.context.user.userId | 暂时只支持在设备上测试时获取 |
 
 可用函数：
